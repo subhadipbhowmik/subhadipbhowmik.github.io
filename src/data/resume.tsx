@@ -22,7 +22,7 @@ export const DATA = {
     "SQL",
     "FIGMA"
   ],
-  memories: "I Love to Capture Past",
+  memories: "I 💖 Love to Capture Past",
   blog: "I reflect myself by my Words", 
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },

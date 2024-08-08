@@ -2,8 +2,8 @@
 export const ALL_IMAGES = [
     {
       imageUrl: '/memories/image-1.jpg',
-      imageTitle: 'Image 1',
-      imageDesc: 'A beautiful landscape',
+      imageTitle: 'GDSC 2022',
+      imageDesc: 'First time attent Google Developer Fest',
     },
     {
       imageUrl: '/memories/image-2.jpg',
