@@ -88,7 +88,7 @@ export default async function Blog({
       />
 
       <Link href={'/blog'}>
-      <Button>
+      <Button className="mb-2">
          Back
         <ChevronLeft/>
 
