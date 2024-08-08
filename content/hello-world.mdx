@@ -1,11 +1,319 @@
 ---
-title: "Hello World"
-publishedAt: "2024-06-18"
-summary: "My first post on my new blog."
+title: "I Created a Dev.to Users Blog Post Fetcher Using its API"
+publishedAt: "August 08, 2024"
+summary: "Building performant apps is crucial, and Jellyfish streamlines this process. When you install your app on a device using Android Gradle Plugin (AGP) 8.4 or higher, Jellyfish automatically generates and installs Baseline Profiles. These profiles represent the ideal performance state for your app, leading to a smoother experience during local installs and low-overhead profiling."
+imageUrl: "/blog/30daysofcpp.png"
+tags: ['CPP', 'JAVASCRIPT']
+
 ---
 
-Hi there!
+## Introduction
+As a developer keen on exploring various APIs and building practical applications, I delved into the world of Dev.to's API to create a simple yet effective blog post fetcher. This project aimed to enable users to retrieve blog posts associated with a specific Dev.to username. In this article, I'll walk you through the steps I took to develop this application and what I learned along the way.
 
-```jsx
-console.log("Hello Shubhi");
+## Why I Created This 🤔
+Understanding how to handle APIs is a crucial skill for developers. I embarked on this project primarily to deepen my knowledge of API integration and data fetching processes. Additionally, I aimed to provide a practical example that fellow developers could use as a learning resource for API handling.
+
+Curious to see the blog post fetcher in action? Check out the website [demo](https://subhadipbhowmik.github.io/dev.to-blog-search/) here to explore its functionalities firsthand!
+
+---
+
+![dev-to-users-fetcher](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tu9krqegohult3y21un9.png)
+
+## Steps to Create This Website with Code 🛠️
+### 1. Planning and Setup
+Firstly, I outlined the project's objectives and set up the necessary project structure. This included creating HTML, CSS, and JavaScript files.
+
+### 2. User Interface Design
+I designed a simple user interface with an input field to accept Dev.to usernames and a submission button to trigger the API call.
+
+### 3. API Integration
+Utilizing the Dev.to API, I implemented logic to fetch blog posts associated with a provided username using JavaScript's `fetch` API.
+
+### 4. Displaying Blog Posts
+Once the data was fetched, I dynamically rendered the retrieved blog posts on the webpage, showcasing details such as titles, descriptions, cover images, user information, and tags.
+
+### 5. Error Handling
+Implemented error handling to notify users if the entered username does not exist on Dev.to.
+
+### 6. Testing and Refinement
+I thoroughly tested the application, ensuring its functionality across different browsers and screen sizes. Any bugs or issues were identified and fixed during this phase.
+
+![save-for-later](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zyzx2yo7srm01k5wveri.png)
+
+### All Codes
+
+**index.html**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dev.to Users Blog Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dev.to Users Blog Posts">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Dev.to Users Blog Posts</h1>
+        <div class="form-container">
+            <form id="usernameForm" class="username-form">
+                <div class="input-container">
+                    <input type="text" id="usernameInput" value="shubhadip_bhowmik" required>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </header>
+
+    <div id="blogPosts" class="hidden">
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
 ```
+
+---
+
+**styles.css**
+```css
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.blog-posts-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.blog-post {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-post h2 {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.blog-post p {
+  margin-bottom: 10px;
+}
+
+.read-more-btn {
+  display: block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.read-more-btn:hover {
+  background-color: #0056b3;
+}
+
+.blog-post .user-info {
+  display: flex;
+  align-items: center; 
+  justify-content: left; 
+}
+
+.blog-post img.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%; 
+  margin-right: 10px; 
+}
+
+.blog-post .user-info p {
+  margin: 0;
+  font-weight: bold; 
+}
+
+.username-form {
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#usernameInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive styling for different screen sizes */
+@media screen and (max-width: 768px) {
+  .blog-posts-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 posts per row for tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blog-posts-container {
+    grid-template-columns: 1fr; 
+  }
+
+  .blog-post img.profile-image {
+    width: 30px; 
+    height: 30px;
+  }
+
+  .blog-post .user-info {
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+  }
+
+  .blog-post .user-info img.profile-image {
+    margin-right: 0; 
+    margin-bottom: 5px; 
+  }
+}
+```
+
+---
+
+**script.js**
+
+```javascript
+document
+  .getElementById("usernameForm")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById("usernameInput").value;
+    const apiUrl = `https://dev.to/api/articles?username=${username}`;
+
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      displayBlogPosts(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  });
+
+function displayBlogPosts(posts) {
+  const blogPostsContainer = document.getElementById("blogPosts");
+  blogPostsContainer.innerHTML = "";
+
+  const blogPostsGrid = document.createElement("div");
+  blogPostsGrid.classList.add("blog-posts-container");
+
+  posts.forEach((post) => {
+    const postElement = document.createElement("div");
+    postElement.classList.add("blog-post");
+
+    postElement.innerHTML = `
+      <img src="${post.cover_image}" alt="Cover Image">
+      <h2>${post.title}</h2>
+      <p>${post.description}</p>
+      <div class="user-info">
+        <img src="${
+          post.user.profile_image
+        }" alt="Profile Image" class="profile-image">
+        <p>${post.user.name}</p>
+      </div>
+      <p><b>${post.tag_list.join(", ")}</b></p>
+      <p>Reactions: ❤️ ${post.public_reactions_count}</p>
+      <a href="${post.url}" target="_blank" class="read-more-btn">Read More</a>
+    `;
+
+    blogPostsGrid.appendChild(postElement);
+  });
+
+  blogPostsContainer.appendChild(blogPostsGrid);
+  blogPostsContainer.classList.remove("hidden");
+}
+
+```
+
+## What I Learned from Creating This Project 🧠
+Developing this project taught me valuable lessons in API integration, asynchronous JavaScript, error handling, and working with external data sources. Understanding how to structure API requests, handle responses, and present fetched data in a user-friendly manner was a significant takeaway from this experience.
+
+---
+
+## Key Learnings and Next Steps 🚀
+
+### Insights 🧠
+
+- **API Mastery:** Deepened understanding of API integration and data retrieval.
+- **Error Handling:** Refined techniques for managing and communicating errors effectively.
+- **User Interface:** Explored creating a clean and user-friendly interface for data presentation.
+
+### Future Plans 🌟
+
+- **Refinement:** Considering UI/UX improvements for a more intuitive user experience.
+- **Functionality:** Exploring options to add filtering or sorting functionalities.
+- **Personalization:** Intending to introduce authentication for personalized features.
+
+This project was a learning curve, uncovering valuable insights and paving the way for future enhancements. Excited to refine and expand this tool further in my coding journey!
+
+---
+
+**Thank you for reading!**
+
+I hope this blog post has provided valuable insights into creating a Dev.to Users Blog Post Fetcher using its API. Exploring API integration and data handling opens doors to endless possibilities in web development.
+
+Discovering the right tools, such as the Dev.to API, is pivotal in crafting efficient and practical applications. Whether you're a seasoned developer or just starting, understanding API interactions is a valuable asset in today's tech landscape.
+
+For more insights into API integration, web development, and technology trends, consider following me on [shubhadipbhowmik](https://shubhadip.bio.link/). Stay tuned for more insightful computer science knowledge, tips, and resources!
+
+Thank you for reading and happy coding! 🚀
+
+--- 
+
+![shubhadip bhowmik](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ld0p3gepsury0nh9hi34.png)

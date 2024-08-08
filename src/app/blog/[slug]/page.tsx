@@ -1,7 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
+import { ChevronLeft, Icon } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -83,6 +86,15 @@ export default async function Blog({
           }),
         }}
       />
+
+      <Link href={'/blog'}>
+      <Button>
+         Back
+        <ChevronLeft/>
+
+      </Button>
+      </Link>
+
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
         {post.metadata.title}
       </h1>

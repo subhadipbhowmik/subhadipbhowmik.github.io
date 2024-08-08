@@ -125,6 +125,8 @@ export const DATA = {
       logoUrl: "/chandigarh-university.png",
       start: "2022",
       end: "2025",
+      description:
+        "Currently I have taken admission here for my B.C.A. I am very excited for physically meet and interact with my new buddy and faculties.",
     },
     {
       school: "Changrachak Jagadish Smriti Vidyapith",
@@ -133,6 +135,8 @@ export const DATA = {
       logoUrl: "/cjsv.png",
       start: "2020",
       end: "2022",
+      description:
+      "It was the first time I was studying far away from my home. A new experiencein hostel life and new friends to get good exposure. Overall a good memory.",
     },
     {
       school: "Moyna Vivekananda Vidyamandir",
@@ -141,6 +145,8 @@ export const DATA = {
       logoUrl: "/mvv.png",
       start: "2014",
       end: "2020",
+      description:
+      "First of all I am very sorry, because I am unable to express that about my memories and moments in this school. I got lots of love and objurgation from my beloved sir and madams. Name of the school ends with Vidyamandir, Yes I can say one thing that all the teachers are iso-god of the school [Vidyamandir]",
     }
   ],
   projects: [
