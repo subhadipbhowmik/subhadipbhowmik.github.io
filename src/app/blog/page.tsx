@@ -36,7 +36,7 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
 
   return (
-    <section>
+    <section className="pb-12">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8 mb-6">
           <div className="gap-2 flex justify-between">

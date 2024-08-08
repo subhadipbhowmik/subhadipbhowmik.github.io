@@ -10,7 +10,7 @@ const BLUR_FADE_DELAY = 0.4;
 
 const Memories: React.FC = () => {
   return (
-    <div className="mx-auto w-full">
+    <div className="mx-auto w-full pb-12">
       <section id="hero">
         <div className="mx-auto w-full mb-6">
           <div className="gap-2 flex justify-between">
