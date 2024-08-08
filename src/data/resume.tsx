@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, Images, MemoryStick, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Shubhadip Bhowmik",
@@ -22,9 +22,12 @@ export const DATA = {
     "SQL",
     "FIGMA"
   ],
+  memories: "I Love to Capture Past",
+  blog: "I reflect myself by my Words", 
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/memories", icon: Images, label: "Memory" },
   ],
   contact: {
     email: "shubhadipbhowmikdev@gmail.com",
@@ -51,12 +54,12 @@ export const DATA = {
 
         navbar: true,
       },
-      Youtube: {
-        name: "Youtube",
-        url: "https://www.youtube.com/@shubhadipbhowmik",
-        icon: Icons.youtube,
-        navbar: true,
-      },
+      // Youtube: {
+      //   name: "Youtube",
+      //   url: "https://www.youtube.com/@shubhadipbhowmik",
+      //   icon: Icons.youtube,
+      //   navbar: true,
+      // },
       email: {
         name: "Send Email",
         url: "#",

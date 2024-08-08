@@ -16,6 +16,7 @@ import Image from "next/image";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
+import { ArrowBigRightDash, ArrowRight, MoveRight } from "lucide-react";
 
 export const metadata = {
   title: "Blog",
@@ -37,20 +38,20 @@ export default async function BlogPage() {
   return (
     <section>
       <section id="hero">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
+        <div className="mx-auto w-full max-w-2xl space-y-8 mb-6">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+                text={DATA.blog}
               />
-              <BlurFadeText
+              {/* <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
-              />
+              /> */}
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
@@ -61,9 +62,9 @@ export default async function BlogPage() {
           </div>
         </div>
       </section>
-      <BlurFade delay={BLUR_FADE_DELAY}>
+      {/* <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
-      </BlurFade>
+      </BlurFade> */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {posts
           .sort((a, b) => {
@@ -108,7 +109,7 @@ export default async function BlogPage() {
                       src={"/me.png"}
                       alt={post.metadata.author}
                       width={32}
-                      height={32} 
+                      height={32}
                       className="rounded-full"
                     />
                     <div>
@@ -123,13 +124,17 @@ export default async function BlogPage() {
                 <CardContent className="mt-auto flex flex-col px-2">
                   {post.metadata.tags && post.metadata.tags.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1">
-                      {post.metadata.tags.map((tag: string) => (
+                      {post.metadata.tags.map((tag: string, index: number) => (
                         <Badge
-                          className="px-1 py-0 text-[10px]"
-                          variant="secondary"
+                          className={`px-1 py-0 text-[10px] ${
+                            index % 2 === 0
+                              ? "bg-[#22C55E] text-white"
+                              : "bg-[#6366F1] text-white"
+                          }`}
+                          variant="outline"
                           key={tag}
                         >
-                          #{tag}
+                          # {tag}
                         </Badge>
                       ))}
                     </div>
@@ -138,9 +143,14 @@ export default async function BlogPage() {
 
                 <CardFooter className="px-2 pb-2">
                   <Link href={`/blog/${post.slug}`}>
-                    <Button className="w-full">Read more</Button>
+                    <Button className="w-full my-2">
+                      Read More
+                      <ArrowRight />
+                    </Button>
                   </Link>
                 </CardFooter>
+
+
               </Card>
             </BlurFade>
           ))}
