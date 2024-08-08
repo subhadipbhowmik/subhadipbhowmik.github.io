@@ -40,6 +40,7 @@ export const ResumeCard = ({
 
   return (
     <Link
+      target="_blank"
       href={href || "#"}
       className="block cursor-pointer"
       onClick={handleClick}
