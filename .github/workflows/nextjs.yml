@@ -1,93 +1,277 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
-name: Deploy Next.js site to Pages
+Skip to content
+DEV Community
+Find related posts...
+Powered by  Algolia
+Create Post
 
+
+4
+Jump to Comments
+4
+Save
+
+Cover image for Automating Next.js Application Deployment with GitHub Actions
+gourab yousuf basir
+gourab yousuf basir
+Posted on 28 Sept 2023
+
+
+9
+Automating Next.js Application Deployment with GitHub Actions
+#
+nextjs
+#
+githubactions
+#
+cicd
+#
+react
+Are you ready to supercharge your Next.js application deployment? With GitHub Actions, the process becomes a breeze, and I'm here to guide you through it step by step. Even if you're new to this, don't worry! We'll make it easy and fun.
+
+Step 1: Setting Up Secrets
+The first thing you need to do is head over to your GitHub repository. From there, navigate to "Secrets and Variables" under the "Actions" tab. We'll set up three secrets that will help automate our deployment:
+
+HOST: This is your server's IP address.
+USERNAME: Enter your server's username.
+SSH_PRIVATE_KEY: See step 2 and 3
+Don't fret; it's easier than it sounds. These secrets will allow GitHub Actions to securely communicate with your server.
+
+Step 2: Generating an SSH Key
+Now, let's generate an SSH key. SSH keys are like digital fingerprints that help authenticate your server and GitHub. Open your terminal and follow these simple commands:
+cd ~/.ssh
+ssh-keygen -t rsa -b 4096 -C "youremail@email.com"
+The -t flag is for specifying type of key. Here we are generating RSA key
+The -b flag sets the key length, which determines the key's strength. Here we are generating 4096 bit key
+The -c flag is is used to add a comment or label to the key. It's not required but can be helpful for identifying the key's purpose or owner.
+You'll be prompted to name your key. Let's call it github_action and you can leave the passphrase empty.
+
+Step 3: Adding the Public Key to GitHub
+Run ls, and you'll see two newly generated files: github_action and github_action.pub. Run:
+cat github_action
+This will display your private key. Copy the content and head back to your repository settings, specifically "Secrets and Variables" under "Actions." Add the private key content to the SSH_PRIVATE_KEY secret.
+
+Step 4: Adding the Private Key to GitHub Secrets
+We're almost there!
+Back in your terminal, let's copy the public key:
+cat github_action.pub
+Now, go to your GitHub repository settings and select "SSH and GPG Keys" from the left navigation bar. Click "New SSH Key" and paste your public key. This step allows your server to communicate securely with your GitHub repository.
+
+Step 5: Authorizing Your Public Key on the Server
+Now, let's make sure your server recognizes your public key. Run this command on your server:
+cat github_action.pub >> authorized_keys
+This command appends your public key to the list of authorized keys on your server, granting access for automated deployments.
+
+Step 6: Creating GitHub Actions Workflow
+The final step is to automate the deployment process. Create a GitHub Actions workflow by adding an action YAML file inside the .github/workflows directory in your repository.
+
+Specify the event name as "push," define the branch name, and outline the action steps in your workflow script. This tells GitHub Actions when to trigger automatic deployments.
+
+Here is an example GitHub Action for automating Next.js deployment. Customize with your repository name, branch name, application directory, and PM2 service name on your server
+name: Deployment Workflow
+
+# Trigger this workflow on pushes to the specified branch
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: [$default-branch]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches:
+      - your-branch-name
 
 jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
-  # Deployment job
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: SSH Deploy
+        # Use the 'appleboy/ssh-action' action for SSH deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }} # Your server's IP address
+          username: ${{ secrets.USERNAME }} # Your server's username
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # Your server's SSH private key
+          script: |
+            cd /path/to/your/application/directory # Specify the path to your app directory on the server
+            git pull
+            npm install
+            npm run build
+            pm2 restart your-pm2-service-name # Replace with your PM2 service name
+
+And that's it! 🚀
+
+From now on, whenever you push changes to your specified branch, GitHub Actions will automatically kick off the deployment process.
+Happy coding! ☕
+
+Top comments (4)
+
+Subscribe
+pic
+Add to the discussion
+ 
+ 
+graemefulton profile image
+Graeme Fulton
+•
+24 Apr
+
+thanks for posting that, helped me get set up! Over here I have written up how I self host NextJS with a blue green deployment workflow - linked your post in the relevant section!
+
+
+1
+ like
+Like
+Reply
+ 
+ 
+azamuddin profile image
+Muhammad Azamuddin
+•
+2 Mar
+
+Why there is npm install & build in the github action step, but then you SSH and doing the exact same thing, npm install & build the app in the server.
+
+Does it means, that actually the build happens on the our server, and we don't need to actually add npm install & build on the github action?
+
+
+Like
+Reply
+ 
+ 
+xyba profile image
+xyba
+•
+7 Apr
+
+I am asking this myself too. Maybe it's to test the code in the action itself before it makes it to the server.
+
+
+1
+ like
+Like
+Reply
+ 
+ 
+xyba profile image
+xyba
+•
+7 Apr
+
+Nvm, I am fairly sure it's because otherwise he couldn't use appleboy/ssh-action@master
+
+
+1
+ like
+Like
+Reply
+Code of Conduct • Report abuse
+DEV Community
+
+Stellar Challenge image
+
+Build Better on Stellar: Smart Contract Challenge
+An opportunity for web devs to learn all about decentralization, wallets, consensus, interoperability, and all the other lingo you may have heard floating around but never quite understood. This is your signal to dive in and unlock those a-ha moments!
+
+Get started →
+
+Read next
+muhammedshamal profile image
+todo list in react js
+Muhammed Shamal PV - Jul 31
+
+ankansaha profile image
+Building a CI/CD Pipeline for a MERN Stack Application with Docker and Jenkins
+Ankan Saha - Aug 2
+
+ankansaha profile image
+MERN Stack Development Best Practices
+Ankan Saha - Aug 2
+
+violetadev profile image
+LCP Improvements React Guide
+V - Jul 30
+
+
+gourab yousuf basir
+Follow
+👨‍💻 Fullstack Developer | JavaScript, TypeScript, Dart | Express, Nest, Next, React, Flutter | Database Enthusiast | AWS & Oracle Cloud Wizard | Web Scraping
+Location
+Dhaka
+Education
+B.Sc in Computer Science and Engineering
+Work
+Software engineer at Interspeed Digital Solution, Dhaka
+Joined
+7 Jan 2020
+Trending on DEV Community 
+Palomino profile image
+Use React.lazy with confidence: A safe way to load components when iterating fast
+#webdev #github #react #identity
+Shanu001x profile image
+How to Dockerize a Next.js Application
+#docker #nextjs #javascript #webdev
+Arindam Majumder  profile image
+8 Developer Tools You Should Try in 2024
+#webdev #react #beginners #programming
+name: Deployment Workflow
+
+# Trigger this workflow on pushes to the specified branch
+on:
+  push:
+    branches:
+      - your-branch-name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: SSH Deploy
+        # Use the 'appleboy/ssh-action' action for SSH deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }} # Your server's IP address
+          username: ${{ secrets.USERNAME }} # Your server's username
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # Your server's SSH private key
+          script: |
+            cd /path/to/your/application/directory # Specify the path to your app directory on the server
+            git pull
+            npm install
+            npm run build
+            pm2 restart your-pm2-service-name # Replace with your PM2 service name
+
+DEV Community — A constructive and inclusive social network for software developers. With you every step of your journey.
+
+Home
+Podcasts
+Videos
+Tags
+DEV Help
+Forem Shop
+Advertise on DEV
+DEV Challenges
+DEV Showcase
+About
+Contact
+Guides
+Software comparisons
+Code of Conduct
+Privacy Policy
+Terms of use
+Built on Forem — the open source software that powers DEV and other inclusive communities.
+
+Made with love and Ruby on Rails. DEV Community © 2016 - 2024.
