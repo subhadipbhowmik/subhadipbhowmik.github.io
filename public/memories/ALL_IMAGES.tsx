@@ -6,6 +6,11 @@ export const ALL_IMAGES = [
     imageDesc: "First time attent Google Developer Fest",
   },
   {
+    imageUrl: "/memories/gdsc-bootcamp.png",
+    imageTitle: "GDSC CU WEB DEV BOOTCAMP",
+    imageDesc: "1st Position in GDSC Web Dev Bootcamp",
+  },
+  {
     imageUrl: "/memories/image-2.jpg",
     imageTitle: "MongoDB Workshop 2024",
     imageDesc: "Attened MongoDB Workshop in Chandigarh University",
@@ -219,5 +224,10 @@ export const ALL_IMAGES = [
     imageUrl: "/memories/image-44.jpg",
     imageTitle: "Somewhere Roaming Around",
     imageDesc: "Exploring new places, wandering around.",
+  },
+  {
+    imageUrl: "/memories/image-45.jpg",
+    imageTitle: "CJSV Hostellers",
+    imageDesc: "My All Classmates of CJSV",
   },
 ];
