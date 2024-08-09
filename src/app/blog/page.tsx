@@ -12,7 +12,6 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";

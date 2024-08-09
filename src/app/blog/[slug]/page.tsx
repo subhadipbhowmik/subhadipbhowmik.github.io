@@ -23,6 +23,7 @@ export async function generateMetadata({
     summary: description,
     image,
   } = post.metadata;
+  
   let ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
 
   return {
