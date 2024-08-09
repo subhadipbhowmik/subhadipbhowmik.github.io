@@ -12,6 +12,7 @@ export const DATA = {
   summary:
     "I am a B.C.A student at Chandigarh University, with a passion for technology. I am an Android and Frontend Web Developer. I write blogs, design UI/Mockups, and Contributing to open-source projects.",
   avatarUrl: "/me.png",
+  ogImage: "/shubhadip-og.png",
   skills: [
     "HTML",
     "CSS",
