@@ -43,6 +43,7 @@ const TutorialsPage: React.FC = () => {
                             <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2">
                             <div className="aspect-w-16 aspect-h-9">
                                 <iframe
+                                    className='aspect-video w-full'
                                     src={video.vidUrl.replace('youtu.be', 'www.youtube.com/embed')}
                                     title={video.vidTitle}
                                     frameBorder="0"

@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, Images, NotebookIcon, TvMinimalPlay} from "lucide-react";
+import { Contact, HomeIcon, Images, NotebookIcon, TvMinimalPlay} from "lucide-react";
 
 export const DATA = {
   name: "Shubhadip Bhowmik",
@@ -31,6 +31,7 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
     { href: "/tutorials", icon: TvMinimalPlay, label: "Tutorials" },
     { href: "/memories", icon: Images, label: "Memories" },
+    { href: "/profiles", icon: Contact, label: "Profiles" },
   ],
   contact: {
     email: "shubhadipbhowmikdev@gmail.com",
@@ -40,21 +41,19 @@ export const DATA = {
         name: "GitHub",
         url: "https://github.com/subhadipbhowmik",
         icon: Icons.github,
-
-        navbar: true,
+        navbar: false,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/shubhadip-bhowmik/",
         icon: Icons.linkedin,
 
-        navbar: true,
+        navbar: false,
       },
       X: {
         name: "X",
         url: "https://x.com/myselfshubhadip",
         icon: Icons.x,
-
         navbar: false,
       },
       // Youtube: {

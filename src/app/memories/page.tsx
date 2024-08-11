@@ -41,7 +41,7 @@ const Memories: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-col-3 gap-4">
           {ALL_IMAGES.map((image, index) => (
             <BlurFade key={index} delay={index * BLUR_FADE_DELAY}>
-              <div className="overflow-hidden rounded-lg shadow-lg">
+              <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2">
                 <Image
                   src={image.imageUrl}
                   alt={image.imageTitle}
