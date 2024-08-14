@@ -13,7 +13,7 @@ const PROFILE_DATA = [
         username: 'subhadipbhowmik',
         about: 'Solving Coding Problems',
         btnText: 'Solve now',
-        linkText: 'https://leetcode.com/subhadipbhowmik'
+        linkText: 'https://leetcode.com/shubhadip_bhowmik'
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ const PROFILE_DATA = [
         username: 'Subhadip Bhowmik',
         about: 'Connect for professional networking',
         btnText: 'Connect now',
-        linkText: 'https://www.linkedin.com/in/subhadipbhowmik'
+        linkText: 'https://www.linkedin.com/in/shubhadip-bhowmik/'
     },
     {
         id: 4,
@@ -29,7 +29,7 @@ const PROFILE_DATA = [
         username: 'subhadipbhowmik',
         about: 'Conquering Data Structures and Algorithms',
         btnText: 'Practice now',
-        linkText: 'https://auth.geeksforgeeks.org/user/subhadipbhowmik'
+        linkText: 'https://www.geeksforgeeks.org/user/shubhadipb/'
     },
     {
         id: 5,
@@ -37,7 +37,7 @@ const PROFILE_DATA = [
         username: 'subhadipbhowmik',
         about: 'Sharing thoughts on Dev.to',
         btnText: 'Read now',
-        linkText: 'https://dev.to/subhadipbhowmik'
+        linkText: 'https://dev.to/shubhadip_bhowmik'
     },
     {
         id: 6,
@@ -45,7 +45,7 @@ const PROFILE_DATA = [
         username: 'subhadipbhowmik',
         about: 'Writing articles on Medium',
         btnText: 'Read now',
-        linkText: 'https://medium.com/@subhadipbhowmik'
+        linkText: 'https://shubhadipbhowmik.medium.com/'
     },
     {
         id: 7,
@@ -53,7 +53,7 @@ const PROFILE_DATA = [
         username: 'subhadipbhowmik',
         about: 'Exploring creative ideas',
         btnText: 'Explore now',
-        linkText: 'https://www.pinterest.com/subhadipbhowmik'
+        linkText: 'https://www.pinterest.com/shubhadip_bhaumik/'
     },
     {
         id: 8,
@@ -61,7 +61,7 @@ const PROFILE_DATA = [
         username: 'Subhadip Bhowmik',
         about: 'Subscribe for tech content',
         btnText: 'Subscribe now',
-        linkText: 'https://www.youtube.com/c/SubhadipBhowmik'
+        linkText: 'https://www.youtube.com/c/shubhadipbhowmik'
     },
     {
         id: 9,
@@ -69,7 +69,7 @@ const PROFILE_DATA = [
         username: 'Subhadip Bhowmik',
         about: 'Developing with Google',
         btnText: 'Explore now',
-        linkText: 'https://developers.google.com/profile/u/subhadipbhowmik'
+        linkText: 'https://g.dev/shubhadipbhowmik'
     },
     {
         id: 10,
@@ -77,7 +77,7 @@ const PROFILE_DATA = [
         username: 'subhadipbhowmik',
         about: 'Reach out via email',
         btnText: 'Email now',
-        linkText: 'mailto:subhadipbhowmik@gmail.com'
+        linkText: 'mailto:shubhadipbhowmikdev@gmail.com'
     }
 ];
 

@@ -26,6 +26,7 @@ export const DATA = {
   memories: "I 💖 Love to Capture Past",
   blog: "I reflect myself by my Words", 
   tutorials: "I love to Craete Tutorials",
+  profile: "Let's Connect",
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },

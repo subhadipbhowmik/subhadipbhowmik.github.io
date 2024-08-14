@@ -22,6 +22,7 @@ function Profiles() {
 
         const leetcodeResponse = await fetch('https://leetcode-stats-api.herokuapp.com/shubhadip_bhowmik');
         const leetcodeData = await leetcodeResponse.json();
+        console.log(leetcodeData)
 
         setGithubData(githubData);
         setLeetcodeData(leetcodeData);
@@ -53,9 +54,9 @@ function Profiles() {
               <div className="flex-col flex flex-1 space-y-1.5">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
                   yOffset={8}
-                  text={DATA.memories}
+                  text={DATA.profile}
                 />
               </div>
               <BlurFade delay={BLUR_FADE_DELAY}>
@@ -89,6 +90,7 @@ function Profiles() {
                 </div>
                 <div className="p-4">
                   <a
+                    target='_blank'
                     href={PROFILE_DATA[0].linkText}
                     className="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300"
                   >
@@ -100,55 +102,56 @@ function Profiles() {
           )}
 
           {/* LeetCode Profile Card */}
-        {leetcodeData && (
-  <BlurFade delay={BLUR_FADE_DELAY}>
-    <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2 p-4">
-      <div className="flex items-center mb-4">
-        <Image
-          width={48}
-          height={48}
-          src={PROFILE_DATA[1].socialMediaIcon}
-          alt={PROFILE_DATA[1].username}
-          className="w-12 h-12 mr-4 p-1 bg-gray-50 rounded-sm"
-        />
-        <div className="text-xl font-bold">
-          {leetcodeData.totalSolved}/{leetcodeData.totalQuestions}
-        </div>
-      </div>
+          {leetcodeData && (
+            <BlurFade delay={BLUR_FADE_DELAY}>
+              <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2 p-4">
+                <div className="flex items-center mb-4">
+                  <Image
+                    width={48}
+                    height={48}
+                    src={PROFILE_DATA[1].socialMediaIcon}
+                    alt={PROFILE_DATA[1].username}
+                    className="w-12 h-12 mr-4 p-1 bg-gray-50 rounded-sm"
+                  />
+                  <div className="text-xl font-bold">
+                    {leetcodeData.totalSolved}/{leetcodeData.totalQuestions}
+                  </div>
+                </div>
 
-      {/* Centered Acceptance Rate */}
-      <p className="text-center text-gray-600 mb-4">
-        Acceptance Rate: {leetcodeData.acceptanceRate}%
-      </p>
+                {/* Centered Acceptance Rate */}
+                <p className="text-center text-gray-600 mb-4">
+                  Acceptance Rate: {leetcodeData.acceptanceRate}%
+                </p>
 
-      {/* Justified Between Difficulty Stats */}
-      <div className="space-y-2">
-        <div className="flex justify-between">
-          <span className="font-semibold">Easy</span>
-          <span>{leetcodeData.easySolved}/{leetcodeData.totalEasy}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-semibold">Medium</span>
-          <span>{leetcodeData.mediumSolved}/{leetcodeData.totalMedium}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-semibold">Hard</span>
-          <span>{leetcodeData.hardSolved}/{leetcodeData.totalHard}</span>
-        </div>
-      </div>
+                {/* Justified Between Difficulty Stats */}
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Easy</span>
+                    <span>{leetcodeData.easySolved}/{leetcodeData.totalEasy}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Medium</span>
+                    <span>{leetcodeData.mediumSolved}/{leetcodeData.totalMedium}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Hard</span>
+                    <span>{leetcodeData.hardSolved}/{leetcodeData.totalHard}</span>
+                  </div>
+                </div>
 
-      {/* Left-aligned Button */}
-      <div className="text-left mt-4">
-        <a
-          href={PROFILE_DATA[1].linkText}
-          className="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300"
-        >
-          {PROFILE_DATA[1].btnText}
-        </a>
-      </div>
-    </div>
-  </BlurFade>
-)}
+                {/* Left-aligned Button */}
+                <div className="text-left mt-4">
+                  <a
+                    target='_blank'
+                    href={PROFILE_DATA[1].linkText}
+                    className="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300"
+                  >
+                    {PROFILE_DATA[1].btnText}
+                  </a>
+                </div>
+              </div>
+            </BlurFade>
+          )}
 
 
 
@@ -173,6 +176,7 @@ function Profiles() {
                 </div>
                 <div className="p-4">
                   <a
+                    target='_blank'
                     href={profile.linkText}
                     className="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300"
                   >
