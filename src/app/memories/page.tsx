@@ -27,6 +27,11 @@ const Memories: React.FC = () => {
                   yOffset={8}
                   text={DATA.memories}
                 />
+                 <BlurFadeText
+                className="max-w-[600px] md:text-xl"
+                delay={BLUR_FADE_DELAY}
+                text={DATA.memoriesDesc}
+              />
               </div>
               <BlurFade delay={BLUR_FADE_DELAY}>
                 <Avatar className="size-28 border">

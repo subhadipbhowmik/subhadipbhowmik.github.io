@@ -10,7 +10,7 @@ const BLUR_FADE_DELAY = 0.1;
 export const metadata = {
     title: "Tutorials",
     description: "I make Tutorials on Web Development, Software Development, Computer & Technology",
-  };
+};
 
 const TutorialsPage: React.FC = () => {
     return (
@@ -22,9 +22,14 @@ const TutorialsPage: React.FC = () => {
                             <div className="flex-col flex flex-1 space-y-1.5">
                                 <BlurFadeText
                                     delay={BLUR_FADE_DELAY}
-                                    className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
+                                    className="text-3xl pb-1 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
                                     yOffset={8}
                                     text={DATA.tutorials}
+                                />
+                                <BlurFadeText
+                                    className="max-w-[600px] md:text-xl"
+                                    delay={BLUR_FADE_DELAY}
+                                    text={DATA.tutorialsDesc}
                                 />
                             </div>
                             <BlurFade delay={BLUR_FADE_DELAY}>
@@ -41,18 +46,18 @@ const TutorialsPage: React.FC = () => {
                     {ALL_VIDEOS.map((video, index) => (
                         <BlurFade key={video.vidId} delay={index * BLUR_FADE_DELAY}>
                             <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2">
-                            <div className="aspect-w-16 aspect-h-9">
-                                <iframe
-                                    className='aspect-video w-full'
-                                    src={video.vidUrl.replace('youtu.be', 'www.youtube.com/embed')}
-                                    title={video.vidTitle}
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen/>
-                                                          
+                                <div className="aspect-w-16 aspect-h-9">
+                                    <iframe
+                                        className='aspect-video w-full'
+                                        src={video.vidUrl.replace('youtu.be', 'www.youtube.com/embed')}
+                                        title={video.vidTitle}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen />
+
                                 </div>
 
-                                 <div className="p-4 bg-red">
+                                <div className="p-4 bg-red">
                                     <h2 className="text-sm font-bold leading-4 mb-2">{video.vidTitle}</h2>
                                     <div className='flex items-center justify-between text-sm text-gray-600'>
                                         <div className="flex items-center space-x-1">

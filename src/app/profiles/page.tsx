@@ -6,73 +6,77 @@ import { DATA } from "@/data/resume";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import PROFILE_DATA from './PROFILE_DATA';
 import Image from 'next/image';
+import { Metadata } from 'next';
 
 const BLUR_FADE_DELAY = 0.4;
 
 function Profiles() {
   const [githubData, setGithubData] = useState<any>(null);
   const [leetcodeData, setLeetcodeData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingGithub, setLoadingGithub] = useState(true);
+  const [loadingLeetcode, setLoadingLeetcode] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        // Fetch GitHub data
         const githubResponse = await fetch('https://api.github.com/users/subhadipbhowmik');
         const githubData = await githubResponse.json();
+        setGithubData(githubData);
+        setLoadingGithub(false);
 
+        // Fetch LeetCode data
         const leetcodeResponse = await fetch('https://leetcode-stats-api.herokuapp.com/shubhadip_bhowmik');
         const leetcodeData = await leetcodeResponse.json();
-        console.log(leetcodeData)
-
-        setGithubData(githubData);
         setLeetcodeData(leetcodeData);
-        setLoading(false);
+        setLoadingLeetcode(false);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setLoading(false);
+        setLoadingGithub(false);
+        setLoadingLeetcode(false);
       }
     }
     fetchData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500">
-
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <>
-      <div className="mx-auto w-full pb-12">
-        <section id="hero">
-          <div className="mx-auto w-full mb-6">
-            <div className="gap-2 flex justify-between">
-              <div className="flex-col flex flex-1 space-y-1.5">
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
-                  yOffset={8}
-                  text={DATA.profile}
-                />
-              </div>
-              <BlurFade delay={BLUR_FADE_DELAY}>
-                <Avatar className="size-28 border">
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
-              </BlurFade>
+    <div className="mx-auto w-full pb-12">
+      <section id="hero">
+        <div className="mx-auto w-full mb-6">
+          <div className="gap-2 flex justify-between">
+            <div className="flex-col flex flex-1 space-y-1.5">
+              <BlurFadeText
+                delay={BLUR_FADE_DELAY}
+                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
+                yOffset={8}
+                text={DATA.profile}
+              />
+              <BlurFadeText
+                className="max-w-[600px] md:text-xl"
+                delay={BLUR_FADE_DELAY}
+                text={DATA.profileDesc}
+              />
             </div>
+            <BlurFade delay={BLUR_FADE_DELAY}>
+              <Avatar className="size-28 border">
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                <AvatarFallback>{DATA.initials}</AvatarFallback>
+              </Avatar>
+            </BlurFade>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-
-          {/* GitHub Profile Card */}
-          {githubData && (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+        {/* GitHub Profile Card */}
+        {loadingGithub ? (
+          <BlurFade delay={BLUR_FADE_DELAY}>
+            <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div>
+            </div>
+          </BlurFade>
+        ) : (
+          githubData && (
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2">
                 <div className="p-4">
@@ -99,10 +103,18 @@ function Profiles() {
                 </div>
               </div>
             </BlurFade>
-          )}
+          )
+        )}
 
-          {/* LeetCode Profile Card */}
-          {leetcodeData && (
+        {/* LeetCode Profile Card */}
+        {loadingLeetcode ? (
+          <BlurFade delay={BLUR_FADE_DELAY}>
+            <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div>
+            </div>
+          </BlurFade>
+        ) : (
+          leetcodeData && (
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2 p-4">
                 <div className="flex items-center mb-4">
@@ -151,44 +163,40 @@ function Profiles() {
                 </div>
               </div>
             </BlurFade>
-          )}
+          )
+        )}
 
-
-
-
-
-          {/* Other Profiles from PROFILE_DATA */}
-          {PROFILE_DATA.slice(2).map((profile, index) => (
-            <BlurFade key={index} delay={(index + 2) * BLUR_FADE_DELAY}>
-              <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2">
-                <div className="flex items-center p-4">
-                  <Image
-                    width={48}
-                    height={48}
-                    src={profile.socialMediaIcon}
-                    alt={profile.username}
-                    className="w-12 h-12 mr-4 p-1 bg-gray-50 rounded-sm"
-                  />
-                  <div>
-                    <h2 className="text-xl font-semibold">{profile.username}</h2>
-                    <p className="text-gray-600">{profile.about}</p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <a
-                    target='_blank'
-                    href={profile.linkText}
-                    className="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300"
-                  >
-                    {profile.btnText}
-                  </a>
+        {/* Other Profiles from PROFILE_DATA */}
+        {PROFILE_DATA.slice(2).map((profile, index) => (
+          <BlurFade key={index} delay={(index + 2) * BLUR_FADE_DELAY}>
+            <div className="overflow-hidden rounded-lg shadow-lg border-green-300 border-2">
+              <div className="flex items-center p-4">
+                <Image
+                  width={48}
+                  height={48}
+                  src={profile.socialMediaIcon}
+                  alt={profile.username}
+                  className="w-12 h-12 mr-4 p-1 bg-gray-50 rounded-sm"
+                />
+                <div>
+                  <h2 className="text-xl font-semibold">{profile.username}</h2>
+                  <p className="text-gray-600">{profile.about}</p>
                 </div>
               </div>
-            </BlurFade>
-          ))}
-        </div>
+              <div className="p-4">
+                <a
+                  target='_blank'
+                  href={profile.linkText}
+                  className="inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300"
+                >
+                  {profile.btnText}
+                </a>
+              </div>
+            </div>
+          </BlurFade>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
 

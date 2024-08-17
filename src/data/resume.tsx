@@ -23,10 +23,14 @@ export const DATA = {
     "SQL",
     "FIGMA"
   ],
-  memories: "I 💖 Love to Capture Past",
-  blog: "I reflect myself by my Words", 
-  tutorials: "I love to Craete Tutorials",
+  memories: "Good Memories",
+  memoriesDesc: "Preserving the past through memories, cherishing moments spent with loved ones, and capturing them forever.",
+  blog: "I Write Blogs", 
+  blogDesc: "Learning and teaching are my passions, and in my free time, I express myself through blogs.", 
+  tutorials: "My Videos",
+  tutorialsDesc: "Sharing knowledge and skills through tutorials is my passion, and I enjoy creating them.",
   profile: "Let's Connect",
+  profileDesc: "Join me on this journey where we share ideas, learn together, and inspire each other.",
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },

@@ -42,15 +42,15 @@ export default async function BlogPage() {
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
+                className="text-3xl pb-1 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-indigo-600"
                 yOffset={8}
                 text={DATA.blog}
               />
-              {/* <BlurFadeText
+              <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
-              /> */}
+              />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
@@ -88,7 +88,7 @@ export default async function BlogPage() {
                       alt={post.metadata.title}
                       width={500}
                       height={300}
-                      className="h-40 w-full object-cover object-top p-2"
+                      className="h-40 w-full object-fill rounded-xl object-top p-2"
                     />
                   )}
                 </Link>
@@ -148,8 +148,6 @@ export default async function BlogPage() {
                     </Button>
                   </Link>
                 </CardFooter>
-
-
               </Card>
             </BlurFade>
           ))}
