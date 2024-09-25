@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "I am a hobbyist software developer and a tinkerer. I love building things and helping people.",
   summary:
-    "I am a B.C.A student at Chandigarh University, with a passion for technology. I am an Android and Frontend Web Developer. I write blogs, design UI/Mockups, and Contributing to open-source projects.",
+    "I am a B.C.A student at Chandigarh University, with a passion for technology. I am an Android and Frontend Web Developer. I write blogs, design UI/Mockups, and Contributing to open-source projects. I have accomplished [certification](/certifications)",
   avatarUrl: "/me.png",
   ogImage: "/shubhadip-og.png",
   skills: [
@@ -23,6 +23,8 @@ export const DATA = {
     "SQL",
     "FIGMA"
   ],
+  certification: "Certifications",
+  certificationDesc: "I have completed various certifications. I always keep myself updated with new certifications.",
   memories: "Good Memories",
   memoriesDesc: "Preserving the past through memories, cherishing moments spent with loved ones, and capturing them forever.",
   blog: "I Write Blogs", 
@@ -185,7 +187,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/examhunt.png",
+      image: "/projects/examhunt.png",
       video:
         "",
     },
@@ -214,7 +216,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/cucal.png",
+      image: "/projects/cucal.png",
       video: "",
     },
     {
@@ -244,7 +246,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/30daysofcpp.png",
+      image: "/projects/30daysofcpp.png",
       video: "",
     },
     {
@@ -267,7 +269,38 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/codingport-banner.png",
+      image: "/projects/codingport-banner.png",
+      video:
+        "",
+    },
+    {
+      title: "BioTree",
+      href: "https://automatic.chat",
+      dates: "Aug 2024 - Sep 2024",
+      active: true,
+      description:
+        "BioBranch is a streamlined and customizable platform that lets you manage and showcase all your social media handles and important links in one place.",
+        technologies: [
+          "JavaScript",
+          "REact",
+          "Next.JS",
+          "TailwindCSS",
+          "Express",
+          "MongoDB"
+        ],
+      links: [
+        {
+          type: "Website",
+          href: "https://biobranch.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/subhadipbhowmik/bio-branch",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/projects/biotree.png",
       video:
         "",
     },
