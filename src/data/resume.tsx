@@ -251,7 +251,7 @@ export const DATA = {
     },
     {
       title: "Codingport",
-      href: "https://automatic.chat",
+      href: "https://codingport.in",
       dates: "April 2023 - March 2024",
       active: true,
       description:
@@ -275,7 +275,7 @@ export const DATA = {
     },
     {
       title: "BioTree",
-      href: "https://automatic.chat",
+      href: "https://biobranch.vercel.app/",
       dates: "Aug 2024 - Sep 2024",
       active: true,
       description:
@@ -307,57 +307,34 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "Hack Western 5",
-      dates: "November 23rd - 25th, 2018",
+      title: "Project Expo '25 CU",
+      dates: "November 19th - 22rd, 2023",
       location: "London, Ontario",
       description:
-        "Developed a mobile application which delivered bedtime stories to children using augmented reality.",
+        "Learning Application for BCA Students which helps in providing Notes, Notification, Teachers details, CR info etc.",
       image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-      links: [],
+        "https://i.ibb.co/31q6y7C/1y-Ygcd7o-400x400.jpg",
+        links: [
+          {
+            title: "Devpost",
+            icon: <Icons.globe className="h-4 w-4" />,
+            href: "https://codingport.in",
+          },
+          {
+            title: "App",
+            icon: <Icons.github className="h-4 w-4" />,
+            href: "https://github.com/subhadipbhowmik/BCA-Mate",
+          }
+        ],
     },
     {
-      title: "HackDavis",
-      dates: "January 20th - 21st, 2018",
-      location: "Davis, California",
+      title: "Bajaj Finance Ideathon",
+      dates: "9th September, 2024",
+      location: "Chandigarh, India",
       description:
         "Developed a mobile application which allocates a daily carbon emission allowance to users to move towards a sustainable environment.",
       image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-davis.png",
-      win: "Best Data Hack",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg",
-      links: [
-        {
-          title: "Devpost",
-          icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/software/my6footprint",
-        },
-        {
-          title: "ML",
-          icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/Wallet6/my6footprint-machine-learning",
-        },
-        {
-          title: "iOS",
-          icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/Wallet6/CarbonWallet",
-        },
-        {
-          title: "Server",
-          icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/Wallet6/wallet6-server",
-        },
-      ],
-    },
-    {
-      title: "HackDavis",
-      dates: "January 20th - 21st, 2018",
-      location: "Davis, California",
-      description:
-        "Developed a mobile application which allocates a daily carbon emission allowance to users to move towards a sustainable environment.",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-davis.png",
+        "https://i.ibb.co/281x1mJ/images.jpg",
       win: "Best Data Hack",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg",
       links: [

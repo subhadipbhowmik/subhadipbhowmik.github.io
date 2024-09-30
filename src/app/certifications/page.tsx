@@ -59,13 +59,15 @@ const Certifications = () => {
             <Card className="flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full">
               <CardContent className="flex flex-col items-center px-2">
                 {/* Certificate image at the top */}
-                <Image
+                {/* <Image
                   src={course.certificate_image}
                   alt={`Certificate for ${course.course_title}`}
                   width={400}
-                  height={200}
-                  className="h-40 w-full object-contain rounded-md"
-                />
+                  height={160}
+                  className="h-40 w-full object-contain rounded-md mt-2"
+                /> */}
+
+             <img src={course.certificate_image} alt={`Certificate for ${course.course_title}`} className='h-50 w-full rounded-md mt-2'/>
 
                 {/* Organisation logo and course title in one row */}
                 <div className="flex items-center mt-4">
