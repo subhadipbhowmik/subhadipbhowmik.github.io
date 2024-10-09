@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import PROFILE_DATA from './PROFILE_DATA';
 import Image from 'next/image';
 
+
 const BLUR_FADE_DELAY = 0.4;
 
 function Profiles() {

@@ -14,14 +14,24 @@ export const DATA = {
   avatarUrl: "/me.png",
   ogImage: "/shubhadip-og.png",
   skills: [
-    "HTML",
-    "CSS",
-    "JS",
     "C",
     "C++",
-    "JAVA",
+    "JavaScript",
+    "ReactJS",
+    "PHP",
     "SQL",
-    "FIGMA"
+    "Bootstrap",
+    "TailwindCSS",
+    "NodeJS",
+    "ExpressJS",
+    "MongoDB",
+    "MySQL",
+    "Git",
+    "GitHub",
+    "Figma",
+    "Postman",
+    "API",
+    "Hosting"
   ],
   certification: "Certifications",
   certificationDesc: "I have completed various certifications. I always keep myself updated with new certifications.",
@@ -81,6 +91,18 @@ export const DATA = {
 
   work: [
     {
+      company: "Hacktoberfest 2024",
+      href: "https://www.holopin.io/@subhadipbhowmik",
+      badges: [],
+      location: "Remote",
+      title: "Project Maintainer",
+      logoUrl: "/hactoberfest.jpg",
+      start: "Oct 2024",
+      end: "Present",
+      description:
+        "As a maintainer for Hacktoberfest 2024, I promoted open-source collaboration by managing pull requests and providing feedback. I also developed BioBranch, a customizable platform that enables users to manage and showcase their social media handles and important links in one place",
+    },
+    {
       company: "Codingport",
       href: "https://codingport.in",
       badges: [],
@@ -123,8 +145,8 @@ export const DATA = {
       location: "Mohali, Chandigarh",
       title: "Contributing Author",
       logoUrl: "/freecodecamp.png",
-      start: "May 2024",
-      end: "August 2024",
+      start: "Aug 2024",
+      end: "Current",
       description:
         "I write technical blog on different technical stacks.",
     },
